@@ -5,6 +5,7 @@ const db = require('./data/db.js')
 const postRouter = require('./data/posts/postsRouter')
 
 const server = express();
+server.use(express.json())
 server.use('/api/posts', postRouter);
 
 // //--get ('/')----//
