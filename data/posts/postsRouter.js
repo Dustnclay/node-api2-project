@@ -16,17 +16,15 @@ router.post('/', (req,res) => {
     const post = req.body
     try{
         if(post.title && post.contents){
-        db.insert(post)
-        .then( response =>
-            res.status(201).json(post)             
-        ).catch( err =>
-            res.status(400).json({message: "post not saved"}) 
-        )            
-    }else{
-        res.status(400).json({message:"add title or contents"})
-    }
-
-   
+            db.insert(post)
+            .then( response =>
+                res.status(201).json(post)             
+            ).catch( err =>
+                res.status(400).json({message: "post not saved"}) 
+            )            
+        }else{
+            res.status(400).json({message:"add title or contents"})
+        }
     }catch{
         res.status(500).json({message:"The users information could not be posted."});
     }
@@ -70,12 +68,9 @@ router.post('/:id/comments', (req,res) => {
                         res.status(404).json({message:"id doesnt exist"})
                     }
                 })
-                    
         }else{
             res.status(400).json({message:"add text field"})
         }
-        
-           
     }catch{
         res.status(500).json({message:"The users information could not be posted."});
     }
